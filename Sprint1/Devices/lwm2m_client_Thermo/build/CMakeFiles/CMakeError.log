@@ -1,0 +1,22 @@
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /home/tyler/i586-zephyr-elf/bin/i586-zephyr-elf-gcc 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+/home/tyler/i586-zephyr-elf/bin/../lib/gcc/i586-zephyr-elf/8.3.0/../../../../i586-zephyr-elf/bin/ld: cannot find crt0.o: No such file or directory
+collect2: error: ld returned 1 exit status
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /home/tyler/i586-zephyr-elf/bin/i586-zephyr-elf-g++ 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+/home/tyler/i586-zephyr-elf/bin/../lib/gcc/i586-zephyr-elf/8.3.0/../../../../i586-zephyr-elf/bin/ld: cannot find crt0.o: No such file or directory
+collect2: error: ld returned 1 exit status
+
+
