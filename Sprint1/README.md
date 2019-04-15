@@ -43,21 +43,11 @@ make
 **NOTE: This set up will work for other applications as well just change samples/net/lwm2m_client to app directory
 
 ### Running Leashan Server
-#### Option 1 (Recommended)
+Go to the Server Folder and run
 ````
-wget https://hudson.eclipse.org/leshan/job/leshan/lastSuccessfulBuild/artifact/leshan-server-demo.jar
 java -jar ./leshan-server-demo.jar
 ````
-To check that it is running properly go to http://localhost:8080
-#### Option 2
-**Note: I have not tested this way yet. However it is posted [here](https://github.com/eclipse/leshan/blob/master/README.md) as an option
-
-1. Get the server files off of git
-
-2. Compile
-  ````mvn clean install````
-
-3. Run  
-  ````java -jar leshan-server-demo/target/leshan-server-demo-*-SNAPSHOT-jar-with-dependencies.jar ````
 
 To check that it is running properly go to http://localhost:8080
+
+**Note: We are only able to connect 1 device at a time to the server and are running the demo web app due to networking issues with the time constrant. This should be fixed by the end of sprint 2.
