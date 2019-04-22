@@ -20,13 +20,13 @@ USE `mydb` ;
 -- Table `mydb`.`Users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Users` (
-  `ID` INT NOT NULL,
-  `username` VARCHAR(45) NOT NULL,
-  `permissionsLevel` INT NOT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE,
-  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC) VISIBLE)
-ENGINE = InnoDB;
+  `UserID` INT NOT NULL,
+  `UserUsername` VARCHAR(45) NOT NULL,
+  `UserpermissionsLevel` INT NOT NULL,
+  PRIMARY KEY (`UserID`),
+  UNIQUE INDEX `username_UNIQUE` (`UserUsername` ASC) VISIBLE,
+  UNIQUE INDEX `ID_UNIQUE` (`UserID` ASC) VISIBLE);
+-- ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -43,8 +43,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`device` (
   UNIQUE INDEX `deviceID_UNIQUE` (`deviceID` ASC) VISIBLE,
   UNIQUE INDEX `deviceName_UNIQUE` (`deviceName` ASC) VISIBLE,
   UNIQUE INDEX `MACADdress_UNIQUE` (`MACAddress` ASC) VISIBLE,
-  UNIQUE INDEX `IPAddress_UNIQUE` (`IPAddress` ASC) VISIBLE)
-ENGINE = InnoDB;
+  UNIQUE INDEX `IPAddress_UNIQUE` (`IPAddress` ASC) VISIBLE);
+-- ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -67,8 +67,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`deviceSecurity` (
     FOREIGN KEY (`userID`)
     REFERENCES `mydb`.`Users` (`ID`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
+-- ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -77,8 +77,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`rooms` (
   `roomID` INT NOT NULL,
   `desiredTemperature` FLOAT NULL DEFAULT NULL,
-  PRIMARY KEY (`roomID`))
-ENGINE = InnoDB;
+  PRIMARY KEY (`roomID`));
+-- ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -101,8 +101,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`temperatureData` (
     FOREIGN KEY (`roomID`)
     REFERENCES `mydb`.`rooms` (`roomID`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
+-- ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -118,8 +118,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`eventHistory` (
     FOREIGN KEY (`userIDWhoInitiated`)
     REFERENCES `mydb`.`Users` (`ID`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
+-- ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -137,8 +137,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`scheduledTasks` (
     FOREIGN KEY (`deviceID`)
     REFERENCES `mydb`.`device` (`deviceID`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
+-- ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -156,8 +156,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`securityInfo` (
     FOREIGN KEY (`deviceID`)
     REFERENCES `mydb`.`device` (`deviceID`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
+-- ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -173,8 +173,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`securityHistory` (
     FOREIGN KEY (`deviceIDTriggered`)
     REFERENCES `mydb`.`device` (`deviceID`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
+-- ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -188,8 +188,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`webServer` (
   `pathToRoot` VARCHAR(500) NOT NULL,
   PRIMARY KEY (`serverIPAddress`),
   UNIQUE INDEX `serverURL_UNIQUE` (`serverURL` ASC) VISIBLE,
-  UNIQUE INDEX `pathToRoot_UNIQUE` (`pathToRoot` ASC) VISIBLE)
-ENGINE = InnoDB;
+  UNIQUE INDEX `pathToRoot_UNIQUE` (`pathToRoot` ASC) VISIBLE);
+-- ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
