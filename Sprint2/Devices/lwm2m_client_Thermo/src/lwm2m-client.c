@@ -38,10 +38,10 @@ LOG_MODULE_REGISTER(LOG_MODULE_NAME);
 #define CONNECT_TIME	K_SECONDS(10)
 
 #define CLIENT_MANUFACTURER	"Zephyr"
-#define CLIENT_MODEL_NUMBER	"OMA-LWM2M Sample Client"
+#define CLIENT_MODEL_NUMBER	"Smart Thermostat 01"
 #define CLIENT_SERIAL_NUMBER	"345000123"
 #define CLIENT_FIRMWARE_VER	"1.0"
-#define CLIENT_DEVICE_TYPE	"OMA-LWM2M Client"
+#define CLIENT_DEVICE_TYPE	"Thermostat"
 #define CLIENT_HW_VER		"1.0.1"
 
 #define ENDPOINT_LEN		32
@@ -161,6 +161,12 @@ static int device_factory_default_cb(u16_t obj_inst_id)
 	return 0;
 }
 
+static int TempSet(u16_t obj_inst_id)
+{
+	LOG_INF("DESIRED TEMP UPDATED");
+	return 0;
+}
+
 #if defined(CONFIG_LWM2M_FIRMWARE_UPDATE_PULL_SUPPORT)
 static int firmware_update_cb(u16_t obj_inst_id)
 {
@@ -257,7 +263,7 @@ static int lwm2m_setup(void)
 	lwm2m_engine_set_res_data("3/0/3", CLIENT_FIRMWARE_VER,
 				  sizeof(CLIENT_FIRMWARE_VER),
 				  LWM2M_RES_DATA_FLAG_RO);
-	lwm2m_engine_register_exec_callback("3/0/4", device_reboot_cb);
+	lwm2m_engine_register_exec_callback("3/0/4", TempSet);
 	lwm2m_engine_register_exec_callback("3/0/5", device_factory_default_cb);
 	lwm2m_engine_set_u8("3/0/9", 95); /* battery level */
 	lwm2m_engine_set_u32("3/0/10", 15); /* mem free */
